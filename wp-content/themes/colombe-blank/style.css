@@ -1,0 +1,493 @@
+/*
+Theme Name: Colombe Blank
+Description: Minimalist high-end fashion theme with monospace typography
+Version: 1.0
+Author: Custom Theme
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&display=swap');
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 20%);
+  --primary: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 96%);
+  --text: hsl(0, 0%, 20%);
+  --neutral: hsl(0, 0%, 91%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 400;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--secondary);
+  border-bottom: 1px solid var(--neutral);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-toggle:hover {
+  color: var(--text);
+}
+
+.hamburger {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  margin-bottom: 4px;
+}
+
+.hamburger:last-child {
+  margin-bottom: 0;
+}
+
+.site-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 32px;
+  width: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.text-menu-toggle {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.text-menu-toggle:hover {
+  color: var(--text);
+}
+
+/* Sidebars */
+.sidebar {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  width: 256px;
+  background: var(--accent);
+  backdrop-filter: blur(8px);
+  background: rgba(245, 245, 245, 0.98);
+  z-index: 40;
+  transition: transform 0.3s ease-in-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar-left {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.sidebar-left.open {
+  transform: translateX(0);
+}
+
+.sidebar-right {
+  right: 0;
+  transform: translateX(100%);
+}
+
+.sidebar-right.open {
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar-section h3 {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-family: 'Courier New', monospace;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar-nav button,
+.sidebar-nav a {
+  display: block;
+  font-size: 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--foreground);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: 'Courier New', monospace;
+}
+
+.sidebar-nav button:hover,
+.sidebar-nav a:hover {
+  color: var(--primary);
+}
+
+/* Main Content */
+.main-content {
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  background: var(--secondary);
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.product-card {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.product-info {
+  text-align: center;
+}
+
+.product-name {
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.product-price {
+  font-size: 12px;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+}
+
+/* Product Detail Overlay */
+.product-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.98);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.product-detail {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.product-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.product-detail-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.product-detail-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-detail-name {
+  font-size: 16px;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+}
+
+.product-detail-price {
+  font-size: 14px;
+  margin-bottom: 2rem;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+}
+
+.product-detail-description {
+  font-size: 12px;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+}
+
+.size-selector {
+  margin-bottom: 2rem;
+}
+
+.size-selector h4 {
+  font-size: 12px;
+  margin-bottom: 1rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+}
+
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.size-option {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--neutral);
+  background: none;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Courier New', monospace;
+}
+
+.size-option:hover,
+.size-option.selected {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+.product-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--primary);
+  background: none;
+  color: var(--primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+.btn-primary:hover {
+  background: var(--text);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(245, 245, 245, 0.8);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 20;
+}
+
+.close-btn:hover {
+  background: rgba(245, 245, 245, 1);
+}
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .product-detail-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+}
+
+/* WordPress specific styles */
+.wp-block-group {
+  margin: 0;
+}
+
+.wp-site-blocks {
+  padding: 0;
+}
+
+.entry-content {
+  margin: 0;
+}
+
+.entry-content > * {
+  margin: 0;
+}
+
+/* Hide WordPress admin bar spacing */
+html {
+  margin-top: 0 !important;
+}
+
+/* Startup Screen */
+.startup-screen {
+  position: fixed;
+  inset: 0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.startup-title {
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  color: black;
+  letter-spacing: 0.2em;
+  font-weight: normal;
+}
+
+.startup-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.startup-instruction {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #666;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
