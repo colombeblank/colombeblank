@@ -1,0 +1,8 @@
+Restructure website into a fully exportable WordPress theme
+
+Completely refactors the COLOMBE BLANK website from a Node.js/TypeScript full-stack application to a custom WordPress theme, including a `wp-content` folder and a SQL database dump for complete exportability.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: 0c2e9083-f43f-4991-9d90-7d5e6180e556
+Replit-Commit-Checkpoint-Type: full_checkpoint
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/c7bc283b-b6ac-4790-b944-f49a61fb23ce/0c2e9083-f43f-4991-9d90-7d5e6180e556/xpVtNEE
