@@ -1,0 +1,440 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colombe blank - High-End Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#000000',
+                        'secondary': '#FFFFFF',
+                        'accent': '#F5F5F5',
+                        'text': '#333333',
+                        'neutral': '#E8E8E8'
+                    },
+                    fontFamily: {
+                        'mono': ['Courier New', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        
+        .menu-overlay {
+            backdrop-filter: blur(10px);
+            background: rgba(245, 245, 245, 0.95);
+        }
+        
+        .product-overlay {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.98);
+        }
+        
+        .vertical-image {
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body class="bg-secondary text-text font-mono">
+    <!-- @COMPONENT: TopNavigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-secondary border-b border-neutral">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Menu Button -->
+            <button id="menuToggle" class="text-primary hover:text-text transition-colors">
+                <span class="block w-5 h-0.5 bg-current mb-1"></span>
+                <span class="block w-5 h-0.5 bg-current mb-1"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+            
+            <!-- Logo Placeholder -->
+            <!-- Logo placeholder image for colombe blank branding -->
+            <div class="absolute left-1/2 transform -translate-x-1/2">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=50" 
+                     alt="colombe blank" 
+                     class="h-8 w-auto" 
+                     data-mock-image="true" 
+                     data-implementation="Replace with actual colombe blank logo" />
+            </div>
+            
+            <!-- Text Menu -->
+            <button id="textMenuToggle" class="text-primary hover:text-text transition-colors text-xs tracking-wider">
+                MENU
+            </button>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: TopNavigation -->
+
+    <!-- @COMPONENT: LeftSidebar -->
+    <aside id="leftSidebar" class="fixed left-0 top-16 bottom-0 w-64 bg-accent menu-overlay transform -translate-x-full transition-transform duration-300 z-40">
+        <div class="p-6 space-y-8">
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">SHOP</h3>
+                <nav class="space-y-3">
+                    <a href="#" class="block text-xs hover:text-primary transition-colors" data-category="women">WOMEN</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors" data-category="men">MEN</a>
+                </nav>
+            </div>
+            
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">FILTER</h3>
+                <div class="space-y-3">
+                    <button class="block text-xs hover:text-primary transition-colors text-left">CLOTHING</button>
+                    <button class="block text-xs hover:text-primary transition-colors text-left">ACCESSORIES</button>
+                    <button class="block text-xs hover:text-primary transition-colors text-left">SHOES</button>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">SORT</h3>
+                <div class="space-y-3">
+                    <button class="block text-xs hover:text-primary transition-colors text-left">NEWEST</button>
+                    <button class="block text-xs hover:text-primary transition-colors text-left">PRICE LOW</button>
+                    <button class="block text-xs hover:text-primary transition-colors text-left">PRICE HIGH</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- @END_COMPONENT: LeftSidebar -->
+
+    <!-- @COMPONENT: RightTextMenu -->
+    <aside id="rightTextMenu" class="fixed right-0 top-16 bottom-0 w-64 bg-accent menu-overlay transform translate-x-full transition-transform duration-300 z-40">
+        <div class="p-6 space-y-8">
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">ACCOUNT</h3>
+                <nav class="space-y-3">
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">SIGN IN</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">REGISTER</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">PROFILE</a>
+                </nav>
+            </div>
+            
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">SUPPORT</h3>
+                <nav class="space-y-3">
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">FAQ</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">CONTACT</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">SHIPPING</a>
+                </nav>
+            </div>
+            
+            <div>
+                <h3 class="text-xs tracking-wider mb-4 text-primary">EXPLORE</h3>
+                <nav class="space-y-3">
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">BLOG</a>
+                    <a href="#" class="block text-xs hover:text-primary transition-colors">ABOUT</a>
+                </nav>
+            </div>
+            
+            <div>
+                <button id="cartToggle" class="text-xs tracking-wider text-primary hover:text-text transition-colors">
+                    CART (<span id="cartCount" data-bind="cartItems.length">0</span>)
+                </button>
+            </div>
+        </div>
+    </aside>
+    <!-- @END_COMPONENT: RightTextMenu -->
+
+    <!-- @COMPONENT: MainProductGrid -->
+    <main class="pt-16">
+        <div class="container mx-auto px-6 py-12">
+            <!-- @MAP: products.map(product => ( -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+                <!-- Minimalist oversized black coat on model -->
+                <div class="product-item cursor-pointer" data-product-id="1">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Minimalist black coat" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Structured white shirt with clean lines -->
+                <div class="product-item cursor-pointer" data-product-id="2">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="White structured shirt" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Luxury leather handbag in neutral tone -->
+                <div class="product-item cursor-pointer" data-product-id="3">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Luxury leather handbag" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- High-end minimalist black trousers -->
+                <div class="product-item cursor-pointer" data-product-id="4">
+                    <img src="https://pixabay.com/get/g9a06d494b6b6d70a848ce38b97171ddd60a3447bc9aef22bc701f71864f6df3a92a7ef5cdfffd2f3ca7d19bb5097716fcd44ae1f0f536f7c69dd6aac9a7d897d_1280.jpg" 
+                         alt="Black minimalist trousers" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Elegant grey cashmere sweater -->
+                <div class="product-item cursor-pointer" data-product-id="5">
+                    <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Grey cashmere sweater" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Premium leather shoes in black -->
+                <div class="product-item cursor-pointer" data-product-id="6">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Premium black leather shoes" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Minimalist white dress with clean silhouette -->
+                <div class="product-item cursor-pointer" data-product-id="7">
+                    <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="White minimalist dress" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- High-end leather jacket in black -->
+                <div class="product-item cursor-pointer" data-product-id="8">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Black leather jacket" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+                
+                <!-- Luxury silk scarf in neutral tones -->
+                <div class="product-item cursor-pointer" data-product-id="9">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Luxury silk scarf" 
+                         class="w-full vertical-image hover:opacity-90 transition-opacity" 
+                         data-mock-image="true" />
+                </div>
+            </div>
+            <!-- @END_MAP )) -->
+        </div>
+    </main>
+    <!-- @END_COMPONENT: MainProductGrid -->
+
+    <!-- @COMPONENT: ProductDetailOverlay -->
+    <div id="productOverlay" class="fixed inset-0 z-50 product-overlay hidden">
+        <div class="flex h-full">
+            <!-- Close Button -->
+            <button id="closeProduct" class="absolute top-6 right-6 text-primary hover:text-text transition-colors z-10">
+                <span class="block w-5 h-0.5 bg-current transform rotate-45 absolute"></span>
+                <span class="block w-5 h-0.5 bg-current transform -rotate-45 absolute"></span>
+            </button>
+            
+            <!-- Product Images -->
+            <div class="flex-1 flex items-center justify-center p-12">
+                <div class="max-w-2xl">
+                    <!-- Main product image being displayed -->
+                    <img id="mainProductImage" 
+                         src="" 
+                         alt="" 
+                         class="w-full h-auto max-h-screen object-contain" 
+                         data-mock-image="true" />
+                </div>
+            </div>
+            
+            <!-- Product Details -->
+            <div class="w-80 bg-secondary p-12 flex flex-col justify-center">
+                <div class="space-y-8">
+                    <div>
+                        <h1 id="productTitle" class="text-sm tracking-wider mb-2" data-bind="product.name">MINIMALIST COAT</h1>
+                        <p id="productPrice" class="text-primary text-xs tracking-wider" data-bind="product.price">€450.00</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xs tracking-wider mb-3 text-primary">DESCRIPTION</h3>
+                        <p id="productDescription" class="text-xs leading-relaxed" data-bind="product.description">
+                            A carefully crafted minimalist coat featuring clean lines and premium materials. 
+                            Designed for the modern individual who values both form and function.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xs tracking-wider mb-3 text-primary">SIZE</h3>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="border border-neutral text-xs py-2 hover:bg-primary hover:text-secondary transition-colors">XS</button>
+                            <button class="border border-neutral text-xs py-2 hover:bg-primary hover:text-secondary transition-colors">S</button>
+                            <button class="border border-neutral text-xs py-2 hover:bg-primary hover:text-secondary transition-colors">M</button>
+                            <button class="border border-neutral text-xs py-2 hover:bg-primary hover:text-secondary transition-colors">L</button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <button class="w-full bg-primary text-secondary text-xs tracking-wider py-4 hover:bg-text transition-colors" 
+                                data-event="click:addToCart">
+                            ADD TO CART
+                        </button>
+                        <button class="w-full border border-primary text-primary text-xs tracking-wider py-4 hover:bg-primary hover:text-secondary transition-colors"
+                                data-event="click:buyNow">
+                            BUY NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: ProductDetailOverlay -->
+
+    <!-- @COMPONENT: CartOverlay -->
+    <div id="cartOverlay" class="fixed inset-0 z-50 product-overlay hidden">
+        <div class="flex h-full">
+            <!-- Close Button -->
+            <button id="closeCart" class="absolute top-6 right-6 text-primary hover:text-text transition-colors z-10">
+                <span class="block w-5 h-0.5 bg-current transform rotate-45 absolute"></span>
+                <span class="block w-5 h-0.5 bg-current transform -rotate-45 absolute"></span>
+            </button>
+            
+            <!-- Cart Content -->
+            <div class="flex-1 flex items-center justify-center p-12">
+                <div class="max-w-2xl w-full">
+                    <h2 class="text-sm tracking-wider mb-8 text-primary">SHOPPING CART</h2>
+                    
+                    <!-- @MAP: cartItems.map(item => ( -->
+                    <div id="cartItems" class="space-y-6">
+                        <!-- Cart items will be populated here -->
+                        <div class="text-xs text-text">Your cart is empty</div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+            
+            <!-- Cart Summary -->
+            <div class="w-80 bg-secondary p-12 flex flex-col justify-center">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xs tracking-wider mb-4 text-primary">SUMMARY</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span>SUBTOTAL</span>
+                                <span id="cartSubtotal" data-bind="cart.subtotal">€0.00</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span>SHIPPING</span>
+                                <span>FREE</span>
+                            </div>
+                            <div class="border-t border-neutral pt-2 mt-4">
+                                <div class="flex justify-between text-xs font-bold">
+                                    <span>TOTAL</span>
+                                    <span id="cartTotal" data-bind="cart.total">€0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-primary text-secondary text-xs tracking-wider py-4 hover:bg-text transition-colors"
+                            data-event="click:checkout">
+                        CHECKOUT
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: CartOverlay -->
+
+    <script>
+        (function() {
+            // Menu functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const textMenuToggle = document.getElementById('textMenuToggle');
+            const leftSidebar = document.getElementById('leftSidebar');
+            const rightTextMenu = document.getElementById('rightTextMenu');
+            
+            menuToggle.addEventListener('click', () => {
+                leftSidebar.classList.toggle('-translate-x-full');
+                rightTextMenu.classList.add('translate-x-full');
+            });
+            
+            textMenuToggle.addEventListener('click', () => {
+                rightTextMenu.classList.toggle('translate-x-full');
+                leftSidebar.classList.add('-translate-x-full');
+            });
+
+            // Product detail functionality
+            const productItems = document.querySelectorAll('.product-item');
+            const productOverlay = document.getElementById('productOverlay');
+            const closeProduct = document.getElementById('closeProduct');
+            const mainProductImage = document.getElementById('mainProductImage');
+            
+            productItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    mainProductImage.src = img.src;
+                    mainProductImage.alt = img.alt;
+                    productOverlay.classList.remove('hidden');
+                    productOverlay.classList.add('fade-in');
+                    // TODO: Load actual product data based on data-product-id
+                });
+            });
+            
+            closeProduct.addEventListener('click', () => {
+                productOverlay.classList.add('hidden');
+            });
+
+            // Cart functionality
+            const cartToggle = document.getElementById('cartToggle');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeCart = document.getElementById('closeCart');
+            
+            cartToggle.addEventListener('click', () => {
+                cartOverlay.classList.remove('hidden');
+                cartOverlay.classList.add('fade-in');
+            });
+            
+            closeCart.addEventListener('click', () => {
+                cartOverlay.classList.add('hidden');
+            });
+
+            // Close overlays when clicking outside
+            document.addEventListener('click', (e) => {
+                if (e.target === productOverlay) {
+                    productOverlay.classList.add('hidden');
+                }
+                if (e.target === cartOverlay) {
+                    cartOverlay.classList.add('hidden');
+                }
+                
+                // Close menus when clicking outside
+                if (!leftSidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    leftSidebar.classList.add('-translate-x-full');
+                }
+                if (!rightTextMenu.contains(e.target) && !textMenuToggle.contains(e.target)) {
+                    rightTextMenu.classList.add('translate-x-full');
+                }
+            });
+
+            // TODO: Implement cart management (add, remove, update quantities)
+            // TODO: Implement user authentication system
+            // TODO: Implement product filtering and sorting
+            // TODO: Implement checkout process
+            // TODO: Implement API integration for product data
+        })();
+    </script>
+</body>
+</html>

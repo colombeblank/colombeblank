@@ -1,0 +1,330 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colombe blank - Luxury Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#000000',
+                        'secondary': '#FFFFFF',
+                        'accent': '#F5F5F5',
+                        'text': '#333333',
+                        'neutral': '#E8E8E8'
+                    },
+                    fontFamily: {
+                        'mingliu': ['MingLiU_HKSCS-ExtB', 'MingLiU', 'PMingLiU', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&display=swap');
+        .font-mingliu { font-family: 'Noto Serif TC', serif; font-weight: 300; }
+        .menu-transition { transition: transform 0.3s ease-in-out; }
+        .product-hover { transition: all 0.2s ease-in-out; }
+        .product-hover:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-secondary font-mingliu text-text overflow-x-hidden">
+    
+    <!-- @COMPONENT: Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-secondary border-b border-neutral">
+        <div class="flex items-center justify-between px-6 py-4">
+            <!-- Logo placeholder -->
+            <!-- Minimal logo placeholder for colombe blank brand -->
+            <div class="w-32 h-8 bg-accent border border-neutral flex items-center justify-center" data-mock="true">
+                <span class="text-xs text-text">colombe blank</span>
+            </div>
+            
+            <!-- Menu button -->
+            <button id="menuToggle" class="text-text hover:text-primary transition-colors duration-200" data-event="click:toggleMenu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: SidebarNavigation -->
+    <nav id="sideMenu" class="fixed top-0 left-0 h-full w-80 bg-secondary border-r border-neutral z-40 transform -translate-x-full menu-transition">
+        <div class="pt-20 pb-6 px-6">
+            <div class="space-y-8">
+                <!-- Gender Categories -->
+                <div class="space-y-4">
+                    <h3 class="text-xs uppercase tracking-wider text-text">Shop</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Women</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Men</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Additional Navigation -->
+                <div class="space-y-4">
+                    <h3 class="text-xs uppercase tracking-wider text-text">Explore</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Collections</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Information -->
+                <div class="space-y-4">
+                    <h3 class="text-xs uppercase tracking-wider text-text">Information</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Shipping</a></li>
+                        <li><a href="#" class="text-sm text-text hover:text-primary transition-colors">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: SidebarNavigation -->
+
+    <!-- Menu Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-primary bg-opacity-50 z-30 opacity-0 invisible transition-all duration-300"></div>
+
+    <!-- @COMPONENT: MainContent -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="px-6 py-16 text-center">
+            <h1 class="text-2xl font-light tracking-wide text-text mb-4">New Collection</h1>
+            <p class="text-sm text-text max-w-md mx-auto leading-relaxed">Minimalist designs crafted with precision and attention to detail</p>
+        </section>
+
+        <!-- Product Grid -->
+        <!-- @COMPONENT: ProductGrid -->
+        <section class="px-6 pb-20">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    
+                    <!-- @MAP: products.map(product => ( -->
+                    <!-- Product 1 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="1">
+                        <!-- Minimalist black coat on white background -->
+                        <img src="https://images.unsplash.com/photo-1578681994506-b8f463449011?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Minimalist black coat" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="2">
+                        <!-- Elegant white shirt hanging on minimalist background -->
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="White minimalist shirt" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="3">
+                        <!-- Luxury black leather handbag on clean white surface -->
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Black leather handbag" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="4">
+                        <!-- Minimalist grey sweater on hanger -->
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Grey minimalist sweater" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="5">
+                        <!-- Luxury leather shoes in minimalist setting -->
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Luxury leather shoes" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="6">
+                        <!-- High-end watch with minimalist design -->
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Minimalist luxury watch" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="7">
+                        <!-- Elegant black dress on white background -->
+                        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="Black elegant dress" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-hover cursor-pointer" data-event="click:openProductDetail" data-product-id="8">
+                        <!-- Minimalist white sneakers on clean background -->
+                        <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600" 
+                             alt="White minimalist sneakers" 
+                             class="w-full aspect-[3/4] object-cover bg-accent" 
+                             data-mock-image="true" />
+                    </div>
+                    <!-- @END_MAP )) -->
+
+                </div>
+            </div>
+        </section>
+        <!-- @END_COMPONENT: ProductGrid -->
+    </main>
+    <!-- @END_COMPONENT: MainContent -->
+
+    <!-- @COMPONENT: ProductDetailModal -->
+    <div id="productModal" class="fixed inset-0 bg-secondary z-50 transform translate-x-full transition-transform duration-300">
+        <div class="h-full flex">
+            <!-- Product Images -->
+            <div class="flex-1 flex items-center justify-center p-8">
+                <div class="max-w-md">
+                    <!-- Main product image placeholder -->
+                    <img id="mainProductImage" 
+                         src="https://images.unsplash.com/photo-1578681994506-b8f463449011?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800" 
+                         alt="Product detail view" 
+                         class="w-full aspect-[3/4] object-cover mb-4" 
+                         data-mock-image="true" />
+                    
+                    <!-- Additional product images -->
+                    <div class="flex space-x-2">
+                        <!-- Secondary view of product in different angle -->
+                        <img src="https://images.unsplash.com/photo-1578681994506-b8f463449011?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=200" 
+                             alt="Product view 2" 
+                             class="w-16 h-20 object-cover cursor-pointer opacity-60 hover:opacity-100 transition-opacity" 
+                             data-mock-image="true" />
+                        <!-- Detail shot of product texture -->
+                        <img src="https://images.unsplash.com/photo-1578681994506-b8f463449011?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=200" 
+                             alt="Product detail" 
+                             class="w-16 h-20 object-cover cursor-pointer opacity-60 hover:opacity-100 transition-opacity" 
+                             data-mock-image="true" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="w-96 bg-accent p-8 flex flex-col">
+                <!-- Close button -->
+                <button id="closeModal" class="self-end mb-6 text-text hover:text-primary">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <!-- Product Information -->
+                <div class="flex-1">
+                    <h2 class="text-lg font-light mb-2" data-bind="product.name" data-mock="true">Minimal Coat</h2>
+                    <p class="text-xl mb-6" data-bind="product.price" data-mock="true">$485</p>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xs uppercase tracking-wider mb-2">Description</h3>
+                        <p class="text-sm leading-relaxed" data-bind="product.description" data-mock="true">
+                            Crafted from premium wool blend, this minimalist coat features clean lines and precise tailoring. 
+                            Perfect for the modern wardrobe seeking timeless sophistication.
+                        </p>
+                    </div>
+
+                    <div class="mb-6">
+                        <h3 class="text-xs uppercase tracking-wider mb-3">Size</h3>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-2 border border-neutral text-xs hover:bg-primary hover:text-secondary transition-colors" data-mock="true">XS</button>
+                            <button class="px-3 py-2 border border-neutral text-xs hover:bg-primary hover:text-secondary transition-colors" data-mock="true">S</button>
+                            <button class="px-3 py-2 border border-neutral text-xs hover:bg-primary hover:text-secondary transition-colors" data-mock="true">M</button>
+                            <button class="px-3 py-2 border border-neutral text-xs hover:bg-primary hover:text-secondary transition-colors" data-mock="true">L</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Options -->
+                <div class="space-y-3">
+                    <button class="w-full py-3 bg-primary text-secondary text-sm hover:bg-text transition-colors" data-event="click:addToCart">
+                        Add to Cart
+                    </button>
+                    <button class="w-full py-3 border border-primary text-primary text-sm hover:bg-primary hover:text-secondary transition-colors" data-event="click:buyNow">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: ProductDetailModal -->
+
+    <script>
+        (function() {
+            // Menu toggle functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            function toggleMenu() {
+                const isOpen = !sideMenu.classList.contains('-translate-x-full');
+                
+                if (isOpen) {
+                    sideMenu.classList.add('-translate-x-full');
+                    menuOverlay.classList.add('opacity-0', 'invisible');
+                } else {
+                    sideMenu.classList.remove('-translate-x-full');
+                    menuOverlay.classList.remove('opacity-0', 'invisible');
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+
+            // Product modal functionality
+            const productModal = document.getElementById('productModal');
+            const closeModal = document.getElementById('closeModal');
+            const productCards = document.querySelectorAll('[data-product-id]');
+
+            function openProductDetail(productId) {
+                productModal.classList.remove('translate-x-full');
+                // TODO: Load actual product data based on productId
+            }
+
+            function closeProductModal() {
+                productModal.classList.add('translate-x-full');
+            }
+
+            productCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-product-id');
+                    openProductDetail(productId);
+                });
+            });
+
+            closeModal.addEventListener('click', closeProductModal);
+
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeProductModal();
+                    if (!sideMenu.classList.contains('-translate-x-full')) {
+                        toggleMenu();
+                    }
+                }
+            });
+
+            // TODO: Implement shopping cart functionality
+            // TODO: Implement product size selection
+            // TODO: Implement product image gallery
+            // TODO: Implement add to cart and buy now functionality
+        })();
+    </script>
+</body>
+</html>

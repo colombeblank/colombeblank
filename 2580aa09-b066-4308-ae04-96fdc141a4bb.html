@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colombe blank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'minglius': ['MingLiU_HKSCS-ExtB', 'monospace'],
+                    },
+                    colors: {
+                        'primary-black': '#000000',
+                        'secondary-white': '#FFFFFF', 
+                        'accent-offwhite': '#F5F5F5',
+                        'text-charcoal': '#333333',
+                        'neutral-grey': '#E8E8E8'
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .menu-overlay {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-overlay.open {
+            transform: translateX(0);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 40px;
+            }
+        }
+        
+        .product-image {
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        
+        .view-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-secondary-white text-text-charcoal font-minglius">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-secondary-white border-b border-neutral-grey">
+        <div class="flex justify-between items-center px-8 py-6">
+            <!-- Logo placeholder -->
+            <div class="w-24 h-8 bg-neutral-grey flex items-center justify-center text-xs">
+                LOGO
+            </div>
+            
+            <!-- Menu toggle -->
+            <button id="menuToggle" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">
+                MENU
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu Overlay -->
+    <div id="menuOverlay" class="menu-overlay fixed top-0 left-0 w-80 h-full bg-secondary-white border-r border-neutral-grey z-40 pt-20">
+        <nav class="px-8">
+            <!-- Gender Categories -->
+            <div class="mb-12">
+                <h3 class="text-xs uppercase tracking-wider mb-6 text-text-charcoal">Shop</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors" onclick="filterProducts('male')">Male</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors" onclick="filterProducts('female')">Female</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors" onclick="filterProducts('all')">All Products</a></li>
+                </ul>
+            </div>
+            
+            <!-- Additional Navigation -->
+            <div class="mb-12">
+                <h3 class="text-xs uppercase tracking-wider mb-6 text-text-charcoal">Information</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">FAQ</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">Blog</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">Contact</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">About</a></li>
+                </ul>
+            </div>
+            
+            <!-- Account -->
+            <div>
+                <h3 class="text-xs uppercase tracking-wider mb-6 text-text-charcoal">Account</h3>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors">Sign In</a></li>
+                    <li><a href="#" class="text-xs uppercase tracking-wider hover:text-primary-black transition-colors" onclick="showView('cart')">Cart (<span id="cartCount">0</span>)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        
+        <!-- Home View -->
+        <div id="homeView" class="view">
+            <div class="px-8 py-12">
+                <div class="product-grid" id="productGrid">
+                    
+                    <!-- Product 1 - Male -->
+                    <!-- A minimalist black wool coat hanging on a white background -->
+                    <div class="product-item cursor-pointer" data-category="male" data-product="1" onclick="showProduct(1)">
+                        <img src="https://images.unsplash.com/photo-1520975954732-35dd22299614?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Black wool coat" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 2 - Female -->
+                    <!-- A elegant white silk blouse on minimalist background -->
+                    <div class="product-item cursor-pointer" data-category="female" data-product="2" onclick="showProduct(2)">
+                        <img src="https://images.unsplash.com/photo-1485145782098-4f5fd605a66b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="White silk blouse" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 3 - Male -->
+                    <!-- A minimalist black turtleneck sweater displayed flat -->
+                    <div class="product-item cursor-pointer" data-category="male" data-product="3" onclick="showProduct(3)">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Black turtleneck sweater" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 4 - Female -->
+                    <!-- A luxury leather handbag in minimal studio setting -->
+                    <div class="product-item cursor-pointer" data-category="female" data-product="4" onclick="showProduct(4)">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Luxury leather handbag" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 5 - Male -->
+                    <!-- A pair of minimalist black leather shoes -->
+                    <div class="product-item cursor-pointer" data-category="male" data-product="5" onclick="showProduct(5)">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Black leather shoes" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 6 - Female -->
+                    <!-- A sleek silver watch on white background -->
+                    <div class="product-item cursor-pointer" data-category="female" data-product="6" onclick="showProduct(6)">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Silver watch" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 7 - Male -->
+                    <!-- A minimalist grey wool scarf laid flat -->
+                    <div class="product-item cursor-pointer" data-category="male" data-product="7" onclick="showProduct(7)">
+                        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Grey wool scarf" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+                    
+                    <!-- Product 8 - Female -->
+                    <!-- A pair of elegant high heels in studio lighting -->
+                    <div class="product-item cursor-pointer" data-category="female" data-product="8" onclick="showProduct(8)">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=533" 
+                             alt="Elegant high heels" 
+                             class="product-image w-full hover:opacity-80 transition-opacity">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product Detail View -->
+        <div id="productView" class="view view-hidden">
+            <div class="px-8 py-12">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                        
+                        <!-- Product Images -->
+                        <div class="space-y-8">
+                            <div id="productMainImage">
+                                <!-- Main product image will be populated by JavaScript -->
+                            </div>
+                            <div class="grid grid-cols-3 gap-4">
+                                <!-- Additional product images -->
+                                <div class="aspect-square bg-accent-offwhite"></div>
+                                <div class="aspect-square bg-accent-offwhite"></div>
+                                <div class="aspect-square bg-accent-offwhite"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Information -->
+                        <div class="space-y-8">
+                            <div>
+                                <button onclick="showView('home')" class="text-xs uppercase tracking-wider mb-8 hover:text-primary-black transition-colors">
+                                    ← Back
+                                </button>
+                                <h1 id="productTitle" class="text-lg uppercase tracking-wider mb-4"></h1>
+                                <p id="productPrice" class="text-sm mb-8"></p>
+                                <p id="productDescription" class="text-xs leading-relaxed mb-12"></p>
+                            </div>
+                            
+                            <!-- Size Selection -->
+                            <div class="mb-8">
+                                <h3 class="text-xs uppercase tracking-wider mb-4">Size</h3>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <button class="border border-neutral-grey py-2 text-xs uppercase hover:bg-primary-black hover:text-secondary-white transition-colors">XS</button>
+                                    <button class="border border-neutral-grey py-2 text-xs uppercase hover:bg-primary-black hover:text-secondary-white transition-colors">S</button>
+                                    <button class="border border-neutral-grey py-2 text-xs uppercase hover:bg-primary-black hover:text-secondary-white transition-colors">M</button>
+                                    <button class="border border-neutral-grey py-2 text-xs uppercase hover:bg-primary-black hover:text-secondary-white transition-colors">L</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Purchase Options -->
+                            <div class="space-y-4">
+                                <button onclick="addToCart()" class="w-full bg-primary-black text-secondary-white py-4 text-xs uppercase tracking-wider hover:bg-text-charcoal transition-colors">
+                                    Add to Cart
+                                </button>
+                                <button class="w-full border border-primary-black py-4 text-xs uppercase tracking-wider hover:bg-primary-black hover:text-secondary-white transition-colors">
+                                    Buy Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cart View -->
+        <div id="cartView" class="view view-hidden">
+            <div class="px-8 py-12">
+                <div class="max-w-4xl mx-auto">
+                    <button onclick="showView('home')" class="text-xs uppercase tracking-wider mb-8 hover:text-primary-black transition-colors">
+                        ← Continue Shopping
+                    </button>
+                    <h1 class="text-lg uppercase tracking-wider mb-12">Shopping Cart</h1>
+                    
+                    <div id="cartItems" class="space-y-8">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                    
+                    <div id="emptyCart" class="text-center py-16">
+                        <p class="text-xs uppercase tracking-wider text-text-charcoal">Your cart is empty</p>
+                    </div>
+                    
+                    <div id="cartSummary" class="view-hidden border-t border-neutral-grey pt-8 mt-12">
+                        <div class="flex justify-between items-center mb-8">
+                            <span class="text-xs uppercase tracking-wider">Total</span>
+                            <span id="cartTotal" class="text-sm">$0.00</span>
+                        </div>
+                        <button class="w-full bg-primary-black text-secondary-white py-4 text-xs uppercase tracking-wider hover:bg-text-charcoal transition-colors">
+                            Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Background overlay for menu -->
+    <div id="menuBackground" class="fixed inset-0 bg-primary-black bg-opacity-20 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        
+        (function() {
+            // Product data
+            const products = {
+                1: { title: "Wool Coat", price: "$580", description: "Premium black wool coat with minimalist design. Crafted from finest materials with attention to detail.", category: "male" },
+                2: { title: "Silk Blouse", price: "$320", description: "Elegant white silk blouse with clean lines. Perfect for professional and casual settings.", category: "female" },
+                3: { title: "Turtleneck Sweater", price: "$240", description: "Minimalist black turtleneck sweater. Essential wardrobe piece with superior comfort.", category: "male" },
+                4: { title: "Leather Handbag", price: "$680", description: "Luxury leather handbag with timeless design. Handcrafted with premium materials.", category: "female" },
+                5: { title: "Leather Shoes", price: "$420", description: "Minimalist black leather shoes. Classic design meets modern comfort.", category: "male" },
+                6: { title: "Silver Watch", price: "$890", description: "Sleek silver watch with precision movement. Contemporary design for everyday wear.", category: "female" },
+                7: { title: "Wool Scarf", price: "$180", description: "Premium grey wool scarf. Soft texture with sophisticated style.", category: "male" },
+                8: { title: "High Heels", price: "$450", description: "Elegant high heels with refined silhouette. Comfort meets luxury design.", category: "female" }
+            };
+            
+            let cart = [];
+            let currentProduct = null;
+            
+            // Menu functionality
+            const menuToggle = document.getElementById('menuToggle');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuBackground = document.getElementById('menuBackground');
+            
+            menuToggle.addEventListener('click', toggleMenu);
+            menuBackground.addEventListener('click', closeMenu);
+            
+            function toggleMenu() {
+                const isOpen = menuOverlay.classList.contains('open');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            function openMenu() {
+                menuOverlay.classList.add('open');
+                menuBackground.classList.remove('pointer-events-none');
+                menuBackground.classList.remove('opacity-0');
+            }
+            
+            function closeMenu() {
+                menuOverlay.classList.remove('open');
+                menuBackground.classList.add('pointer-events-none');
+                menuBackground.classList.add('opacity-0');
+            }
+            
+            // Product filtering
+            window.filterProducts = function(category) {
+                const productItems = document.querySelectorAll('.product-item');
+                productItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                closeMenu();
+            };
+            
+            // View management
+            window.showView = function(viewName) {
+                const views = document.querySelectorAll('.view');
+                views.forEach(view => view.classList.add('view-hidden'));
+                document.getElementById(viewName + 'View').classList.remove('view-hidden');
+                closeMenu();
+                
+                if (viewName === 'cart') {
+                    updateCartDisplay();
+                }
+            };
+            
+            // Product detail
+            window.showProduct = function(productId) {
+                currentProduct = products[productId];
+                
+                // Update product information
+                document.getElementById('productTitle').textContent = currentProduct.title;
+                document.getElementById('productPrice').textContent = currentProduct.price;
+                document.getElementById('productDescription').textContent = currentProduct.description;
+                
+                // Update main image
+                const productImage = document.querySelector(`[data-product="${productId}"] img`).cloneNode(true);
+                productImage.className = 'w-full aspect-[3/4] object-cover';
+                document.getElementById('productMainImage').innerHTML = '';
+                document.getElementById('productMainImage').appendChild(productImage);
+                
+                showView('product');
+            };
+            
+            // Cart functionality
+            window.addToCart = function() {
+                if (currentProduct) {
+                    cart.push({ ...currentProduct, id: Date.now() });
+                    updateCartCount();
+                    // Simple feedback
+                    const button = event.target;
+                    const originalText = button.textContent;
+                    button.textContent = 'Added to Cart';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 1500);
+                }
+            };
+            
+            function updateCartCount() {
+                document.getElementById('cartCount').textContent = cart.length;
+            }
+            
+            function updateCartDisplay() {
+                const cartItems = document.getElementById('cartItems');
+                const emptyCart = document.getElementById('emptyCart');
+                const cartSummary = document.getElementById('cartSummary');
+                
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '';
+                    emptyCart.classList.remove('view-hidden');
+                    cartSummary.classList.add('view-hidden');
+                } else {
+                    emptyCart.classList.add('view-hidden');
+                    cartSummary.classList.remove('view-hidden');
+                    
+                    cartItems.innerHTML = cart.map(item => `
+                        <div class="flex justify-between items-center border-b border-neutral-grey pb-8">
+                            <div>
+                                <h3 class="text-xs uppercase tracking-wider mb-2">${item.title}</h3>
+                                <p class="text-xs text-text-charcoal">${item.price}</p>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-xs uppercase tracking-wider hover:text-primary-black">Remove</button>
+                        </div>
+                    `).join('');
+                    
+                    // Calculate total
+                    const total = cart.reduce((sum, item) => {
+                        const price = parseFloat(item.price.replace('$', ''));
+                        return sum + price;
+                    }, 0);
+                    document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+                }
+            }
+            
+            window.removeFromCart = function(itemId) {
+                cart = cart.filter(item => item.id !== itemId);
+                updateCartCount();
+                updateCartDisplay();
+            };
+            
+            // Initialize
+            updateCartCount();
+        })();
+    </script>
+</body>
+</html>
